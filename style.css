@@ -1271,3 +1271,30 @@
     .wingR { transform-origin: 12% 60%; animation: flapR 2.6s ease-in-out infinite; }
     @keyframes flapL { 0%,100%{ transform:rotate(0deg); } 50%{ transform:rotate(-12deg); } }
     @keyframes flapR { 0%,100%{ transform:rotate(0deg); } 50%{ transform:rotate(12deg); } }
+
+/* Mobile fix: keep the interactive bow inside the visible gift scene */
+@media (max-width: 768px), (pointer: coarse) {
+  #scene-gift .archery-wrap {
+    width: 100%;
+    max-width: 100%;
+    height: min(54vh, 420px);
+    padding: 0 8px 8px;
+    overflow: visible;
+  }
+
+  #scene-gift .archery-box {
+    left: 8px;
+    top: auto;
+    bottom: 12px;
+    width: clamp(105px, 29vw, 140px);
+    z-index: 60;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: auto;
+  }
+
+  #scene-gift .archery-box svg {
+    pointer-events: none;
+  }
+}
